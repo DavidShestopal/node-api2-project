@@ -4,6 +4,8 @@ const db = require('../data/db.js');
 
 server.use(express.json());
 
+//get
+
 server.get('/', (req, res) => {
   db.find()
     .then((users) => {
@@ -44,6 +46,8 @@ server.get('/:id/comments', (req, res) => {
   }
 });
 
+//post
+
 server.post('/', (req, res) => {
   const body = req.body;
   if (!body.contents || !body.title) {
@@ -83,6 +87,8 @@ server.post('/:id/comments', (req, res) => {
   }
 });
 
+//delete
+
 server.delete('/:id', (req, res) => {
   const id = req.params.id;
   if (!id) {
@@ -97,6 +103,8 @@ server.delete('/:id', (req, res) => {
       });
   }
 });
+
+//put
 
 server.put('/:id', (req, res) => {
   const id = req.params.id;
